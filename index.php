@@ -7,6 +7,9 @@
 	if (!isset($_SESSION['ordem'])) {
 		$_SESSION['ordem'] = "id";
 	}
+	if(isset($_GET['ordenar'])){
+		$_SESSION['ordem'] = $_GET['ordenar'];
+	}
 	$usuario = $pessoa->exibir($_SESSION['ordem']);
  	
 	?>
@@ -50,13 +53,13 @@
 					<table class="table table-responsive">
 						<thead>
 							<tr class="bg-info">
-								<th><a href="ordenar_lista.php?ordenar=id">NºRegistro</a></th>
-								<th><a href="ordenar_lista.php?ordenar=nome">NOME</a></th>
-								<th><a href="ordenar_lista.php?ordenar=email">EMAIL</a></th>
-								<th><a href="ordenar_lista.php?ordenar=cpf">CPF</a></th>
-								<th><a href="ordenar_lista.php?ordenar=cep">CEP</a></th>
-								<th><a href="ordenar_lista.php?ordenar=celular">CELULAR</a></th>
-								<th><a href="ordenar_lista.php?ordenar=cnpj">CPNJ</a></th>
+								<th><a href="index.php?ordenar=id">NºRegistro</a></th>
+								<th><a href="index.php?ordenar=nome">NOME</a></th>
+								<th><a href="index.php?ordenar=email">EMAIL</a></th>
+								<th><a href="index.php?ordenar=cpf">CPF</a></th>
+								<th><a href="index.php?ordenar=cep">CEP</a></th>
+								<th><a href="index.php?ordenar=celular">CELULAR</a></th>
+								<th><a href="index.php?ordenar=cnpj">CPNJ</a></th>
 								<th><i class="fas fa-user-edit"></i></th>
 								<th><i class="fas fa-trash-alt"></i></th>
 							</tr>
