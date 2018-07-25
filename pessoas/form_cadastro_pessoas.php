@@ -1,5 +1,12 @@
-<?php include_once("communs/header.php") ?>
+<?php
+	include_once("../communs/header.php") ;
+	include("../classes/Profissao.class.php");
 
+	$profissao = new Profissao();
+	$selecao = $profissao->selecionar();
+ 	
+?>
+	
 	<div class="container">
 		<div class="row">
 			<div class="offset-xl-3 col-xl-6 offset-lg-3 col-lg-6 offset-md-3 col-md-6  offset-sm-3 col-sm-6 col-12 " >
@@ -30,6 +37,15 @@
 					
 					<label for="cimg">Imagem</label>
 					<input type="url" name="imagem" id="mimg" class="form-control" required><br>
+					<label for="selecao">Profissão</label>
+					<select class="form-control" id="selecao" name="selecao">
+						<?php 
+							foreach ($selecao as $key => $item) { ?>
+									<option value="<?= $item['id'] ?>" ><?= $item['nome'] ?></option>
+							<?php }
+
+						?>
+					</select><br>
 					<label for="icpf">CPF</label>
 					<input type="text" name="cpf" id="mcpf" class="form-control mask_cpf" required>
 					<label for="cep">CEP</label>
@@ -39,7 +55,7 @@
 					<label for="cnpj">CNPJ</label>
 					<input type="text" name="cnpj" id="mcnpj" class="form-control mask_cnpj" required><br>
 					<button type="submit" class="btn btn-info  btn-lg btn-block">Cadastrar</button>
-					<a href="index.php" class="btn btn-warning  btn-lg btn-block">Voltar</a>	
+					<a href="<?= $_SESSION['base'] ?>/pessoas/exibir_lista.php" class="btn btn-warning  btn-lg btn-block">Voltar</a>	
 
 
 				</form>
@@ -48,4 +64,4 @@
 	</div><br><br>	
 
 
-<?php include_once("communs/footer.php") ?>
+<?php include_once("../communs/footer.php") ?>
