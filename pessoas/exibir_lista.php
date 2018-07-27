@@ -1,33 +1,18 @@
 <?php 
 	include_once("../communs/header.php") ;
 	include("../classes/Pessoa.class.php");
-
-
-
-?>
-<?php 
 	
+if(isset($_GET['ordenar'])){
+	$ordem = $_GET['ordenar'];
 
-	
-	if (!isset($_SESSION['ordem'])) {
-		$_SESSION['ordem'] = "id";
-	}
-	if(isset($_GET['ordenar'])){
-		$_SESSION['ordem'] = $_GET['ordenar'];
-
-	}
+}else{
+	$ordem = "id";
+}
 
 
-		$pessoa = new Pessoa();
-		$lista = $pessoa->exibir($_SESSION['ordem']);
+	$pessoa = new Pessoa();
+	$lista = $pessoa->exibir($ordem);
 		
-
-
-
-
-
-
-
 ?>
 <div class="container">
 	
@@ -91,50 +76,41 @@ if((isset($lista)) && (count($lista)!=0)){ ?>
 					<tbody>	
 
 
-			 		<?php	foreach ($lista as $key => $dados) { 
-								
-								
-
-			 				?>
-					
-									
-									
-										<tr>
-											<td>
-												<?= $dados['id'] ?>
-											</td>
-											
-											<td>
-												<?= $dados['nome'] ?>
-											</td>
-											<td>
-												<?php echo substr($dados['email'], 0 ,12) ?>...
-											</td>
-											<td>
-												<?= $dados['profissao_id'] ?>
-											</td>
-											<td class="mask_cpf">
-												<?= $dados['cpf'] ?>
-											</td>
-											<td class="mask_cep">
-												<?= $dados['cep'] ?>
-											</td>
-											<td class="mask_celular">
-												<?= $dados['celular'] ?>
-											</td>
-											<td class="mask_cnpj">
-												<?= $dados['cnpj'] ?>
-											</td>
-											<td>
-												<a href="form_editar.php?editar=<?= $dados['id'] ?>"><i class="fas fa-pencil-alt"></i></a>
-											</td>
-											<td><a href="excluir.php?excluir=<?= $dados['id'] ?>"><i class="fas fa-times-circle"></i></a></td>
-										</tr>
-									</tbody>
-								
+			 		<?php	foreach ($lista as $key => $dados) { ?>
+			
+						<tr>
+							<td>
+								<?= $dados['id'] ?>
+							</td>
 							
-						
-				
+							<td>
+								<?= $dados['nome'] ?>
+							</td>
+							<td>
+								<?php echo substr($dados['email'], 0 ,12) ?>...
+							</td>
+							<td>
+								<?= $dados['profissao_id'] ?>
+							</td>
+							<td class="mask_cpf">
+								<?= $dados['cpf'] ?>
+							</td>
+							<td class="mask_cep">
+								<?= $dados['cep'] ?>
+							</td>
+							<td class="mask_celular">
+								<?= $dados['celular'] ?>
+							</td>
+							<td class="mask_cnpj">
+								<?= $dados['cnpj'] ?>
+							</td>
+							<td>
+								<a href="form_editar.php?editar=<?= $dados['id'] ?>"><i class="fas fa-pencil-alt"></i></a>
+							</td>
+							<td><a href="excluir.php?excluir=<?= $dados['id'] ?>"><i class="fas fa-times-circle"></i></a></td>
+						</tr>
+					</tbody>
+	
 			<?php  } ?>
 				</table>
 
@@ -144,8 +120,6 @@ if((isset($lista)) && (count($lista)!=0)){ ?>
 					<div class="alert alert-danger" role="alert">
 						<strong><p>Lista de pessoas vazias!</p></strong>
 					</div>
-				
-
 			</div>	
 			<?php 
 			 }

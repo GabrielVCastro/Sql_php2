@@ -15,34 +15,30 @@
 	}
 
 	public function exibir($ordem){
-		include '../communs/conexao.php';
- 			$conexao = conexao();
- 			$sql = "SELECT * FROM profissao ORDER BY $ordem";
- 			$stmt = $conexao->prepare($sql);
- 			
- 			$stmt->execute();
- 			$resultado = $stmt->fetchALL();	
- 			return $resultado;
+		include('../communs/conexao.php');
+		$sql = "SELECT * FROM profissao ORDER BY $ordem";
+		$stmt = $pdo->prepare($sql);
+		$stmt->execute();
+		$resultado = $stmt->fetchALL();	
+		return $resultado;
 
 	}
 
 	public function buscar($id){
-		include '../communs/conexao.php';
-			$conexao = conexao();
-			$sql = "SELECT * from profissao where id= :id";
-			$stmt = $conexao->prepare($sql);
-			$stmt->bindValue(':id',$id);
-			$stmt->execute();
-			$result = $stmt->fetch();
-			return $result;
+		include('../communs/conexao.php');	
+		$sql = "SELECT * from profissao where id= :id";
+		$stmt = $pdo->prepare($sql);
+		$stmt->bindValue(':id',$id);
+		$stmt->execute();
+		$result = $stmt->fetch();
+		return $result;
 	}
 
 	public function editar($nome, $descricao, $salario , $id){
-			include '../communs/conexao.php';
-			$conexao = conexao();
-			$sql = "UPDATE profissao SET nome = :nome, descricao = :descricao, salario = :salario  WHERE id = :id ";
+		include('../communs/conexao.php');
+		$sql = "UPDATE profissao SET nome = :nome, descricao = :descricao, salario = :salario  WHERE id = :id ";
 
-			$stmt = $conexao->prepare($sql);
+		$stmt = $pdo->prepare($sql);
  		$stmt->bindParam(':nome',$nome);
  		$stmt->bindParam(':descricao',$descricao);
  		$stmt->bindParam(':salario',$salario);
@@ -58,10 +54,9 @@
 
 	public function excluir($id){
 		
-		include '../communs/conexao.php';
-			$conexao = conexao();
+		include('../communs/conexao.php');
 		$sql = "DELETE from profissao where id = :id";
-			$stmt = $conexao->prepare($sql);
+			$stmt = $pdo->prepare($sql);
 			$stmt->bindParam(":id", $id);
 			if ($stmt->execute()) {
 				return "excluido";
@@ -72,11 +67,9 @@
 		}
 
 	public function selecionar(){
-		include '../communs/conexao.php';
-			$conexao = conexao();
+		include('../communs/conexao.php');
 			$sql = "SELECT * from profissao ";
-			$stmt = $conexao->prepare($sql);
-			
+			$stmt = $pdo->prepare($sql);	
 			$stmt->execute();
 			$result = $stmt->fetchAll();
 			return $result;

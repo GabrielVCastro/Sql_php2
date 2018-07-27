@@ -7,8 +7,9 @@
 	}
 	$pessoa = new Pessoa();
 	$editar = $pessoa->buscar($_GET['editar']);
-	
+	$profissao = $pessoa->buscar_profissao();
 
+	
 
 ?>	
 	<div class="container">
@@ -28,10 +29,10 @@
 					<label for="selecao">Profissão</label>
 					<select class="form-control" id="selecao" name="selecao" >
 						<?php 
-							foreach ($selecao as $key => $item) { ?>
+							foreach ($profissao as $key => $item) { ?>
 									<option value="<?= $item['id'] ?>" ><?= $item['nome'] ?></option>
 							<?php }
-
+ 
 						?>
 					</select><br>
 					<label for="icpf">CPF</label>

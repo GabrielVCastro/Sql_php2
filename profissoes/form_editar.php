@@ -8,10 +8,6 @@
  	
 
 ?>
-
-
-
-
 <div class="container">
 	<div class="row">
 		<div class="offset-xl-3 col-xl-6 offset-lg-3 col-lg-6 offset-md-3 col-md-6  offset-sm-3 col-sm-6 col-12 " >

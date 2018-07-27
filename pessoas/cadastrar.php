@@ -4,27 +4,27 @@ session_start();
 	include '../communs/conexao.php';	
 	$pessoa = new Pessoa();
 	$today = date("Y-m-d H:i:s");
- 	$pessoa->limpar($_POST['nome'], $_POST['email'], $today, $_POST['imagem'], $_POST['selecao'], $_POST['cpf'],$_POST['cep'], $_POST['cel'], $_POST['cnpj']);
+	$pessoa->limpar($_POST['nome'], $_POST['email'], $today, $_POST['imagem'], $_POST['selecao'], 			$_POST['cpf'],$_POST['cep'], $_POST['cel'], $_POST['cnpj']);
 
- 		$conexao = conexao();
- 		$sql = "INSERT INTO pessoas (id, nome, email, data_hora, imagem, profissao_id,  cpf, cep, celular, cnpj) VALUES('default', :nome, :email, '$today',  :imagem, :selecao, :cpf, :cep, :celular, :cnpj)";
+	
+	$sql = "INSERT INTO pessoas (id, nome, email, data_hora, imagem, profissao_id,  cpf, cep, celular, cnpj) VALUES('default', :nome, :email, '$today',  :imagem, :selecao, :cpf, :cep, :celular, :cnpj)";
 
- 		$stmt = $conexao->prepare($sql);
- 		$stmt->bindParam(':nome',$pessoa->nome);
- 		$stmt->bindParam(':email',$pessoa->email);
- 		$stmt->bindParam(':imagem',$pessoa->imagem);
- 		$stmt->bindParam(':selecao',$pessoa->profissao_id);
- 		$stmt->bindParam(':cpf',$pessoa->cpf);
- 		$stmt->bindParam(':cep',$pessoa->cep);
- 		$stmt->bindParam(':celular',$pessoa->celular);
- 		$stmt->bindParam(':cnpj',$pessoa->cnpj);
+	$stmt = $pdo->prepare($sql);
+	$stmt->bindParam(':nome',$pessoa->nome);
+	$stmt->bindParam(':email',$pessoa->email);
+	$stmt->bindParam(':imagem',$pessoa->imagem);
+	$stmt->bindParam(':selecao',$pessoa->profissao_id);
+	$stmt->bindParam(':cpf',$pessoa->cpf);
+	$stmt->bindParam(':cep',$pessoa->cep);
+	$stmt->bindParam(':celular',$pessoa->celular);
+	$stmt->bindParam(':cnpj',$pessoa->cnpj);
 
- 		if ($stmt->execute()) {
- 			$_SESSION['sucesso'] = "Usuário cadastrado com sucesso!";
- 			header("Location: form_cadastro_pessoas.php");
- 		}else{
- 			$_SESSION['erro'] = "Tente novamente!";
- 			header("Location: http://localhost/sql_2/index.php");
- 		}
+	if ($stmt->execute()) {
+		$_SESSION['sucesso'] = "Usuário cadastrado com sucesso!";
+		header("Location: form_cadastro_pessoas.php");
+	}else{
+		$_SESSION['erro'] = "Tente novamente!";
+		header("Location: http://localhost/sql_2/index.php");
+	}
  		
 ?>

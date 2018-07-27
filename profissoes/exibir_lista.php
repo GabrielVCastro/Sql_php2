@@ -1,30 +1,20 @@
 <?php 
-	include_once("../communs/header.php") ;
-	include("../classes/Profissao.class.php") ;
 
+include_once("../communs/header.php") ;
+include("../classes/Profissao.class.php") ;
 
-	$profissao = new Profissao();
+$profissao = new Profissao();
 	
 
-	if (!isset($_SESSION['ordem_profissao'])) {
-		$_SESSION['ordem_profissao'] = "id";
-	}
-	
-	if(isset($_GET['ordenar_prof'])){
-		$_SESSION['ordem_profissao'] = $_GET['ordenar_prof'];
-	}	
-	
-$lista = $profissao->exibir($_SESSION['ordem_profissao']);
+if(isset($_GET['ordenar_prof'])){
+	$ordem = $_GET['ordenar_prof'];
+}else{
+	$ordem = "id";
+}
+
+$lista = $profissao->exibir($ordem);
 
 ?>	
-
-
-
-
-
-
-
-
 
 	<div class="container">
 		<div class="row">
@@ -46,58 +36,48 @@ $lista = $profissao->exibir($_SESSION['ordem_profissao']);
 		if((isset($lista)) && (count($lista)!=0)){  ?>
 			<br>
 				<table class="table ">
-					<thead>	
-						<tr class="bg-info">
-							<th><a href="exibir_lista.php?ordenar_prof=id">NºRegistro</a></th>
-							<th><a href="exibir_lista.php?ordenar_prof=nome">NOME</a></th>
-							<th><a href="exibir_lista.php?ordenar_prof=descricao">Descrição</a></th>
-							<th><a href="exibir_lista.php?ordenar_prof=salario">Salário Min</a></th>
-							<th><i class="fas fa-user-edit"></i></th>
-							<th><i class="fas fa-trash-alt"></i></th>
-							
-						</tr>
-					</thea>
-				<tbody>
+						<thead>	
+							<tr class="bg-info">
+								<th><a href="exibir_lista.php?ordenar_prof=id">NºRegistro</a></th>
+								<th><a href="exibir_lista.php?ordenar_prof=nome">NOME</a></th>
+								<th><a href="exibir_lista.php?ordenar_prof=descricao">Descrição</a></th>
+								<th><a href="exibir_lista.php?ordenar_prof=salario">Salário Min</a></th>
+								<th><i class="fas fa-user-edit"></i></th>
+								<th><i class="fas fa-trash-alt"></i></th>
+								
+							</tr>
+						</thea>
+					<tbody>
 					 
-			<?php foreach ($lista as $key => $item) { ?>
-					<tr>
-						<td>
-						 	<?= $item['id'] ?>
-						</td>
-						<td>
-							<?= $item['nome'] ?>
-						</td>
-						<td>
-							<?php echo substr($item['descricao'], 0,8) ?>
-						</td>
-						<td class="money2">
-							<?php echo $item['salario'] ?>
-							
-						</td>
-						<td>
-							<a href="form_editar.php?editar=<?= $item['id'] ?>"><i class="fas fa-pencil-alt"></i></a>
-						</td>
-						<td><a href="excluir.php?excluir=<?= $item['id'] ?>"><i class="fas fa-times-circle"></i></a>
-						</td>
-					</tr>
-
-				
-				
-
-				</tbody>
-			<?php } ?>
-			
+				<?php foreach ($lista as $key => $item) { ?>
+						<tr>
+							<td>
+							 	<?= $item['id'] ?>
+							</td>
+							<td>
+								<?= $item['nome'] ?>
+							</td>
+							<td>
+								<?php echo substr($item['descricao'], 0,8) ?>
+							</td>
+							<td class="money2">
+								<?php echo $item['salario'] ?>
+								
+							</td>
+							<td>
+								<a href="form_editar.php?editar=<?= $item['id'] ?>"><i class="fas fa-pencil-alt"></i></a>
+							</td>
+							<td><a href="excluir.php?excluir=<?= $item['id'] ?>"><i class="fas fa-times-circle"></i></a>
+							</td>
+						</tr>
+					</tbody>
+				<?php } ?>
 				</table>
-
 		<?php }else{ ?>
 				<br>
 				<div class="alert alert-danger" role="alert">
 					<strong><p>Lista de profissões vazias!</p></strong>
 				</div>
-		
-		<?php }
-
-
-	?>
+		<?php } ?>
 </div>
 <?php  include_once("../communs/footer.php") ; ?>
