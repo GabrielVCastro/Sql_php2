@@ -61,16 +61,17 @@
  			return $resultado;
  		}
 
- 		public function editar($nome, $email, $data, $imagem, $cpf, $cep, $cel, $cnpj,$id){
+ 		public function editar($nome, $email, $data, $imagem, $profissao_id, $cpf, $cep, $cel, $cnpj,$id){
  			include('../communs/conexao.php');
  			
- 			$sql = "UPDATE pessoas SET nome = :nome, email = :email, data_hora = :data, imagem = :imagem, cpf = :cpf, cep = :cep, celular = :celular, cnpj = :cnpj WHERE id = :id ";
+ 			$sql = "UPDATE pessoas SET nome = :nome, email = :email, data_hora = :data, imagem = :imagem, profissao_id = :profissao_id , cpf = :cpf, cep = :cep, celular = :celular, cnpj = :cnpj WHERE id = :id ";
 
  			$stmt = $pdo->prepare($sql);
 	 		$stmt->bindParam(':nome',$nome);
 	 		$stmt->bindParam(':email',$email);
 	 		$stmt->bindParam(':data',$data);
 	 		$stmt->bindParam(':imagem',$imagem);
+	 		$stmt->bindParam(':profissao_id',$profissao_id);
 	 		$stmt->bindParam(':cpf',$cpf);
 	 		$stmt->bindParam(':cep',$cep);
 	 		$stmt->bindParam(':celular',$cel);
