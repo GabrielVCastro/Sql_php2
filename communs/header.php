@@ -11,7 +11,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Rambla|Rufina" rel="stylesheet">
 	<script src="../assets/js/jquery-3.3.1.min.js" type="text/javascript"></script>
 	<script src="../assets/js/jquery.mask.min.js" type="text/javascript"></script>
-
+	<!--<meta http-equiv="content-type" content="text/html;charset=iso-8859-1" /> !-->
 	<?php  
 		session_start();
 		

@@ -9,6 +9,6 @@
 		header("Location: exibir_lista.php");
 
 	}else{
-		header("Location: http://localhost/sql_2/index.php");
+		header("Location: ../index.php");
 	}
 ?>

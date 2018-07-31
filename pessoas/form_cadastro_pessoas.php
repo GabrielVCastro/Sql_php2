@@ -1,6 +1,16 @@
 <?php
 	include_once("../communs/header.php") ;
 	include("../classes/Profissao.class.php");
+	include("../classes/Pessoa.class.php");
+	$profissao = new Profissao();
+	$verificar = $profissao->selecionar();
+	$pessoa = new Pessoa();
+ 	$cidades = $pessoa->buscar_cidade();
+ 	
+	if (count($verificar)==0) {
+		$_SESSION['erro'] = "Cadastre alguma profissão antes das pessoas!";
+		header("Location: ../index.php");
+	}
 	if (isset($_SESSION['logado'])) {
 		$profissao = new Profissao();
 		$selecao = $profissao->selecionar();
@@ -40,12 +50,24 @@
 						<label for="selecao">Profissão</label>
 						<select class="form-control" id="selecao" name="selecao">
 							<?php 
-								foreach ($selecao as $key => $item) { ?>
-										<option value="<?= $item['id'] ?>" ><?= $item['nome'] ?></option>
+								foreach ($selecao as  $item) { ?>
+										<option  value="<?= $item['id'] ?>"> <?= $item['nome'] ?></option>
 								<?php }
 
 							?>
 						</select><br>
+						<label for="idestado">Cidade/Estado</label>
+						<select class="form-control" name="cidade" >
+								<?php 
+									foreach ($cidades as $key => $cidade) {  ?>
+
+										<option value="<?= $cidade['id'] ?>"><?php echo $cidade['nome']." - ".$cidade['uf'] ?></option>
+									<?php }
+
+								?>			
+				
+						</select>
+						<br>
 						<label for="icpf">CPF</label>
 						<input type="text" name="cpf" id="mcpf" class="form-control mask_cpf" required>
 						<label for="cep">CEP</label>

@@ -11,7 +11,8 @@
 		header("Location: exibir_lista.php");
 
 	}else{
-		echo "erro";
+		$_SESSION['erro'] = "Existe pessoas exercendo esta profissão!";
+		header("Location: exibir_lista.php");
 	}
 
 

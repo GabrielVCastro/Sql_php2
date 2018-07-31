@@ -1,7 +1,15 @@
 <?php 
 	include_once("../communs/header.php") ;
 	include("../classes/Pessoa.class.php");
-	
+	include("../classes/Profissao.class.php");
+	$profissao = new Profissao();
+	$verificar = $profissao->selecionar();
+
+if (count($verificar)==0) {
+	$_SESSION['erro'] = "Cadastre alguma profissão antes das pessoas!";
+	header("Location: ../index.php");
+}
+
 if (isset($_SESSION['logado'])) {
 	# code...
 	if(isset($_GET['ordenar'])){
@@ -67,6 +75,7 @@ if (isset($_SESSION['logado'])) {
 								<th><a href="exibir_lista.php?ordenar=nome">NOME</a></th>
 								<th><a href="exibir_lista.php?ordenar=email">EMAIL</a></th>
 								<th><a href="">Profissao</a></th>
+								<th><a href="">Cidade</a></th>
 								<th><a href="exibir_lista.php?ordenar=cpf">CPF</a></th>
 								<th><a href="exibir_lista.php?ordenar=cep">CEP</a></th>
 								<th><a href="exibir_lista.php?ordenar=celular">CELULAR</a></th>
@@ -94,6 +103,9 @@ if (isset($_SESSION['logado'])) {
 								<td>
 									<?= $dados['profissao_id'] ?>
 								</td>
+								<td>
+									<?= $dados['cidade_id'] ?>
+								</td>
 								<td class="mask_cpf">
 									<?= $dados['cpf'] ?>
 								</td>
@@ -109,13 +121,20 @@ if (isset($_SESSION['logado'])) {
 								<td>
 									<a href="form_editar.php?editar=<?= $dados['id'] ?>"><i class="fas fa-pencil-alt"></i></a>
 								</td>
-								<td><a href="excluir.php?excluir=<?= $dados['id'] ?>"><i class="fas fa-times-circle"></i></a></td>
+								<td>
+									<a href="excluir.php?excluir=<?= $dados['id'] ?>" ">
+										<i class="fas fa-times-circle"></i>
+									</a>
+									
+	 								</td>
+									
+									
 							</tr>
 						</tbody>
 		
 				<?php  } ?>
 					</table>
-
+						
 				<?php }else{ ?>
 
 						<br>

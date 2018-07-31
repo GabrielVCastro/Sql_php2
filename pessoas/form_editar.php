@@ -1,6 +1,13 @@
 <?php 
 	include_once("../communs/header.php") ;
 	include("../classes/Pessoa.class.php");
+	include("../classes/Profissao.class.php");
+	$profissao = new Profissao();
+	$verificar = $profissao->selecionar();
+	if (count($verificar)==0) {
+		$_SESSION['erro'] = "Cadastre alguma profissão antes das pessoas!";
+		header("Location: ../index.php");
+	}	
 	if (isset($_SESSION['logado'])) {
 		if ($_GET['editar']=="") {
 			$_SESSION['erro'] = "Informe um usuário antes!";
@@ -9,6 +16,8 @@
 		$pessoa = new Pessoa();
 		$editar = $pessoa->buscar($_GET['editar']);
 		$profissao = $pessoa->buscar_profissao();
+
+ 		$cidades = $pessoa->buscar_cidade();
 
 		
 
@@ -36,6 +45,18 @@
 	 
 							?>
 						</select><br>
+						<label for="idestado">Cidade/Estado</label>
+						<select class="form-control" name="cidade" >
+								<?php 
+									foreach ($cidades as $key => $cidade) {  ?>
+
+										<option value="<?= $cidade['id'] ?>"><?php echo $cidade['nome']." - ".$cidade['uf'] ?></option>
+									<?php }
+
+								?>			
+				
+						</select>
+						<br>
 						<label for="icpf">CPF</label>
 						<input type="text" name="cpf" id="mcpf" class="form-control mask_cpf" value="<?= $editar['cpf'] ?>" required>
 						<label for="cep">CEP</label>
