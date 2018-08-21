@@ -2,7 +2,8 @@ body.login {
   padding-top: 25px;
   background-color: #cdcdcd;
 }
-form {
+form,
+.chamados {
   margin-top: 75px;
   border: solid 1px #000000;
   padding: 25px 25px 35px 25px;
@@ -10,7 +11,8 @@ form {
   box-shadow: 5px 5px 20px 15px #a5a2a2;
   border-radius: 15px;
 }
-form h2 {
+form h2,
+.chamados h2 {
   text-align: center;
 }
 table thead th a {
@@ -132,8 +134,28 @@ table thead th a {
   -moz-animation: logo 1000ms alternate infinite linear;
   border-radius: 20%;
 }
+.chamado {
+  font-size: 35px;
+  color: black;
+}
+.chamado:hover {
+  transition: 0.3s;
+  color: #cdcdcd;
+}
 @media screen and (min-width: 1178px) {
   .row .cadastrar {
     margin-left: -23px;
   }
+}
+.container .titulo {
+  text-align: center;
+}
+.alert p {
+  text-align: center;
+}
+.icone {
+  font-size: 25px;
+}
+.container h2 {
+  text-align: center;
 }

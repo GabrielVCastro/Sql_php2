@@ -49,6 +49,7 @@
 						<input type="url" name="imagem" id="mimg" class="form-control" required><br>
 						<label for="selecao">Profissão</label>
 						<select class="form-control" id="selecao" name="selecao">
+							 <option disabled="disabled" selected>Selecionar...</option>
 							<?php 
 								foreach ($selecao as  $item) { ?>
 										<option  value="<?= $item['id'] ?>"> <?= $item['nome'] ?></option>
@@ -77,7 +78,7 @@
 						<label for="cnpj">CNPJ</label>
 						<input type="text" name="cnpj" id="mcnpj" class="form-control mask_cnpj" required><br>
 						<button type="submit" class="btn btn-info  btn-lg btn-block">Cadastrar</button>
-						<a href="<?= $_SESSION['base'] ?>/pessoas/exibir_lista.php" class="btn btn-warning  btn-lg btn-block">Voltar</a>	
+						<a href="exibir_lista.php" class="btn btn-warning  btn-lg btn-block">Voltar</a>	
 
 
 					</form>

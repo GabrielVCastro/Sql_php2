@@ -55,7 +55,7 @@
  		public function exibir($parametro){
  			include('../communs/conexao.php');
  			
- 			$sql = "SELECT pessoas.id ,pessoas.nome, pessoas.email, pessoas.cpf, pessoas.cep, pessoas.celular, pessoas.cnpj, profissao.nome as profissao_id, cidade.nome as cidade_id from pessoas inner join profissao on profissao.id = pessoas.profissao_id inner join cidade on pessoas.cidade_id = cidade.id ;";
+ 			$sql = "SELECT pessoas.id ,pessoas.nome, pessoas.email, pessoas.cpf, pessoas.cep, pessoas.celular, pessoas.cnpj, profissao.nome as profissao_id, cidade.nome as cidade_id from pessoas inner join profissao on profissao.id = pessoas.profissao_id inner join cidade on pessoas.cidade_id = cidade.id order by $parametro ";
  			$stmt = $pdo->prepare($sql);
  			
  			$stmt->execute();
@@ -129,6 +129,37 @@
  			if (count($resultado)>0) {
  				return $resultado; 
  			}	
+
+ 		}
+
+ 		public function buscar_pessoas(){
+ 			include("../communs/conexao.php");
+ 			$sql = "SELECT * FROM pessoas ";
+ 			$stmt = $pdo->prepare($sql);
+ 			$stmt->execute();
+ 			$resultado = $stmt->fetchALL();
+ 			if (count($resultado)>0) {
+ 				return $resultado;
+ 			}
+ 			
+ 			
+ 		
+ 		}
+
+
+ 		public function  buscar_chamados($id){
+ 			include("../communs/conexao.php");
+ 			$sql = "SELECT chamado.*, pessoas.nome FROM chamado INNER JOIN pessoas on chamado.id_pessoa = pessoas.id  WHERE chamado.id_pessoa = :id;";
+ 			$stmt = $pdo->prepare($sql);
+ 			$stmt->bindParam(':id', $id);
+ 			$stmt->execute();
+ 			$resultado = $stmt->fetchALL();
+ 			if (count($resultado)>0) {
+					return $resultado;
+ 				}
+ 			
+
+
 
  		}
 

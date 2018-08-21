@@ -28,6 +28,7 @@ if (isset($_SESSION['logado'])) {
 		
 
 		<div class="row">
+			
 			<div class="offset-xl-2 col-xl-2 offset-lg-1 col-lg-2 offset-md-1 col-md-2 offset-2 col-2">
 				<br>
 				<a href="form_cadastro_pessoas.php" class="btn btn-info cadastrar">Cadastrar</a>
@@ -35,7 +36,7 @@ if (isset($_SESSION['logado'])) {
 			</div>
 			<div class="offset-xl-5 col-xl-2 offset-lg-7 col-lg-2 offset-md-7 col-md-2">
 				<br>
-				<a href="<?= $_SESSION['base'] ?>index.php" class="btn btn-warning">Voltar</a>
+				<a href="../index.php" class="btn btn-warning">Voltar</a>
 
 			</div>
 		</div>
@@ -68,7 +69,7 @@ if (isset($_SESSION['logado'])) {
 	if((isset($lista)) && (count($lista)!=0)){ ?>
 		
 					<br>
-					<table class="table table-responsive">
+					<table class="table table-responsive ">
 						<thead>
 							<tr class="bg-info">
 								<th><a href="exibir_lista.php?ordenar=id">NºRegistro</a></th>
@@ -82,6 +83,7 @@ if (isset($_SESSION['logado'])) {
 								<th><a href="exibir_lista.php?ordenar=cnpj">CPNJ</a></th>
 								<th><i class="fas fa-user-edit"></i></th>
 								<th><i class="fas fa-trash-alt"></i></th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>	
@@ -119,17 +121,24 @@ if (isset($_SESSION['logado'])) {
 									<?= $dados['cnpj'] ?>
 								</td>
 								<td>
-									<a href="form_editar.php?editar=<?= $dados['id'] ?>"><i class="fas fa-pencil-alt"></i></a>
+									<a href="form_editar.php?editar=<?= $dados['id'] ?>">
+										<i class="fas fa-pencil-alt"></i>
+									</a>
 								</td>
 								<td>
 									<a href="excluir.php?excluir=<?= $dados['id'] ?>" ">
 										<i class="fas fa-times-circle"></i>
+									</a>	
+	 							</td>
+								<td>
+									<a href="chamados_pessoa.php?id_pessoa=<?= $dados['id'] ?>">
+										<i class="far fa-comments chamado"></i>
 									</a>
-									
-	 								</td>
-									
+								</td>	
 									
 							</tr>
+
+
 						</tbody>
 		
 				<?php  } ?>

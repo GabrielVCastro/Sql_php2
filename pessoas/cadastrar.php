@@ -26,7 +26,7 @@ session_start();
 		header("Location: form_cadastro_pessoas.php");
 	}else{
 		$_SESSION['erro'] = "Tente novamente!";
-		header("Location: http://localhost/sql_2/index.php");
+		header("Location: ../index.php");
 	}
  		
 ?>

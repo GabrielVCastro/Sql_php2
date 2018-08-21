@@ -25,13 +25,30 @@ if (isset($_SESSION['logado'])) {
 				</div>
 				<div class="offset-xl-5 col-xl-2 offset-lg-7 col-lg-2 offset-md-7 col-md-2">
 					<br>
-					<a href="<?= $_SESSION['base'] ?>index.php" class="btn btn-warning">Voltar</a>
+					<a href="../index.php" class="btn btn-warning">Voltar</a>
 
 				</div>
 			</div>
 		</div>
 
 	<div class="container">
+		<?php
+				if(isset($_SESSION['sucesso'])){ ?>
+					<br><br>
+							<div class="alert alert-success" role="alert">
+							 	<strong><p><?= $_SESSION['sucesso'] ?></p></strong>
+							</div>
+					<?php }
+						$_SESSION['sucesso'] = null;
+
+						if(isset($_SESSION['erro'])){ ?>
+						<br><br>
+								<div class="alert alert-warning" role="alert">
+								 	<strong><p><?= $_SESSION['erro'] ?></p></strong>
+								</div>
+						<?php }
+							$_SESSION['erro'] = null; 
+				  	?>
 		<?php 
 			if((isset($lista)) && (count($lista)!=0)){  ?>
 				<br>
