@@ -53,6 +53,14 @@
 	 		}
 		}
 
+		public function verificar(){
+			include('../communs/conexao.php');
+			$sql = "SELECT * from pessoas ";
+			$stmt = $pdo->prepare($sql);	
+			$stmt->execute();
+			$result = $stmt->fetchAll();
+			return $result;
+		}
 
 
 

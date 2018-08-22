@@ -3,8 +3,14 @@ include_once("../communs/header.php");
 include("../classes/Chamado.class.php");
 
 $chamado = new Chamado();
+
+$verificar = $chamado->exibir_lista();
 $lista =$chamado->exibir_lista();
 
+if (count($verificar)==0) {
+	$_SESSION['erro'] = "Cadastre alguma pessoa antes das pessoas!";
+	header("Location: ../index.php");
+}
 ?>
 
 <div class="container">
