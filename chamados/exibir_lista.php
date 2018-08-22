@@ -90,7 +90,7 @@ if((isset($lista) && (count($lista)>0))){ ?>
 										
 									</td>
 									<td>
-										<a href="excluir.php?excluir= <?= $item['id'] ?>"><i class="fas fa-times-circle"></i></a>
+										<a href="#" class="type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal""><i class="fas fa-times-circle"></i></a>
 									</td>
 									<td><a href="../comentario/comentario.php?chamado= <?= $item['id'] ?>">Comentario</a></td>
 									
@@ -119,3 +119,27 @@ if((isset($lista) && (count($lista)>0))){ ?>
 ?>
 
 <?php include_once("../communs/footer.php") ?>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       Tem certeza que deseja excluir o chamado?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href="excluir.php?excluir= <?= $item['id'] ?>" type="button" class="btn btn-primary">Save changes</a>
+      </div>
+    </div>
+  </div>
+</div>
