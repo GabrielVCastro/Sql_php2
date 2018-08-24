@@ -94,7 +94,10 @@
 
 					</table>	
 		</div>
- 	<?php }
+ 	<?php }else{
+ 				$_SESSION['erro'] =  "Cadastre algum comentário antes de tentar acessá-lo.";
+				header("Location: exibir_lista.php");	
+ }
 ?>
 
 </div>

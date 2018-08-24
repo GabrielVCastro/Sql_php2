@@ -4,11 +4,11 @@ include("../classes/Chamado.class.php");
 
 $chamado = new Chamado();
 
-$verificar = $chamado->exibir_lista();
+$verificar = $chamado->verificar();
 $lista =$chamado->exibir_lista();
 
 if (count($verificar)==0) {
-	$_SESSION['erro'] = "Cadastre alguma pessoa antes das pessoas!";
+	$_SESSION['erro'] = "Cadastre alguma pessoa antes dos chamados!";
 	header("Location: ../index.php");
 }
 ?>

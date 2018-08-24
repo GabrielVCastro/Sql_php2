@@ -38,8 +38,10 @@
 						<input type="url" name="imagem" id="mimg" class="form-control" value="<?= $editar['imagem'] ?>" required><br>
 						<label for="selecao">Profissão</label>
 						<select class="form-control" id="selecao" name="selecao" >
+							<option selected disabled value="<?= $editar['profissao_id']?>"><?= $editar['nome_profissao']?></option>
 							<?php 
 								foreach ($profissao as $key => $item) { ?>
+
 										<option value="<?= $item['id'] ?>" ><?= $item['nome'] ?></option>
 								<?php }
 	 
@@ -47,10 +49,11 @@
 						</select><br>
 						<label for="idestado">Cidade/Estado</label>
 						<select class="form-control" name="cidade" >
+							
 								<?php 
 									foreach ($cidades as $key => $cidade) {  ?>
 
-										<option value="<?= $cidade['id'] ?>"><?php echo $cidade['nome']." - ".$cidade['uf'] ?></option>
+										<option  value="<?= $cidade['id'] ?>"><?php echo $cidade['nome']." - ".$cidade['uf'] ?></option>
 									<?php }
 
 								?>			
@@ -67,7 +70,7 @@
 						<input type="text" name="cnpj" id="mcnpj" class="form-control mask_cnpj" value="<?= $editar['cnpj'] ?>" required><br>
 						<input type="hidden" name="id" value="<?= $editar['id'] ?>">
 						<button type="submit" class="btn btn-info  btn-lg btn-block">Editar</button>
-						<a href="<?= $_SESSION['base'] ?>/pessoas/exibir_lista.php" class="btn btn-warning  btn-lg btn-block">Voltar</a>	
+						<a href="exibir_lista.php" class="btn btn-warning  btn-lg btn-block">Voltar</a>	
 
 
 					</form>

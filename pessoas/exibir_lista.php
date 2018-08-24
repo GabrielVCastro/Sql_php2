@@ -60,6 +60,15 @@ if (isset($_SESSION['logado'])) {
 						<?php }
 							$_SESSION['excluido'] = null; 
 				  	?>
+				  	<?php
+				  	if(isset($_SESSION['erro'])){ ?>
+					<br><br>
+						<div class="alert alert-danger" role="alert">
+						 	<strong><p><?= $_SESSION['erro'] ?></p></strong>
+						</div>
+					<?php }
+						$_SESSION['erro'] = null; 
+					  	?>
 			</div>
 		</div>
 

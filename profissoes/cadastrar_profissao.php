@@ -16,9 +16,9 @@
 
 	if ($stmt->execute()) {
 		 $_SESSION['sucesso'] = "Profissao cadastrada com sucesso!";
-		header("Location: http://localhost/sql_2/index.php");
+		header("Location: ../index.php");
 	}else{
 		 $_SESSION['erro'] = "Tente novamente!";
-		header("Location: http://localhost/sql_2/index.php");
+		header("Location: ../index.php");
 	}
  	

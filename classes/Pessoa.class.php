@@ -42,7 +42,7 @@
  		public function buscar($id){
  			include('../communs/conexao.php');
  			
- 			$sql = "SELECT  * from pessoas where id = :id";
+ 			$sql = "SELECT  pessoas.*, profissao.nome as nome_profissao from pessoas inner join profissao on profissao.id = pessoas.profissao_id where pessoas.id= :id";
  			$stmt = $pdo->prepare($sql);
  			$stmt->bindValue(':id',$id);
  			$stmt->execute();

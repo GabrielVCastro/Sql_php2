@@ -8,9 +8,9 @@
  
 	if ($retorno=="salvo") {
 		$_SESSION['sucesso'] = "Usuário editado com sucesso!";
-		header("Location: http://localhost/sql_2/pessoas/exibir_lista.php");
+		header("Location: exibir_lista.php");
 	}else{
-		header("Location: http://localhost/sql_2/index.php");
+		header("Location: ../index.php");
 	}
 
 ?>

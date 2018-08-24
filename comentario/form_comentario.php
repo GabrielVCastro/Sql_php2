@@ -15,9 +15,10 @@
 				<h2>Fazer comentário</h2>
 				<legend>Título do chamado: <?= $chamado[0]['titulo'] ?></legend>
 				<label for="idcomentario"><strong>Comentário</strong></label>
-				<textarea name="comentario" id="idcomentario" cols="30" rows="10" class="form-control"></textarea><br>
+				<textarea name="comentario" id="idcomentario" cols="30" rows="10" class="form-control" required></textarea><br>
 				<input type="hidden" value="<?= $chamado[0]['id'] ?>" name='id_chamado'>
 				<button type="submit" class="btn btn-info  btn-lg btn-block">Comentar</button>
+				<a href="comentario.php" class="btn btn-warning  btn-lg btn-block"></a>
 			</form>
 		</div>
 	</div>

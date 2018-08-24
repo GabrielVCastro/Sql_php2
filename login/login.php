@@ -18,7 +18,7 @@
 
 		?>
 
-			<div class="offset-xl-3	col-xl-6  offset-lg-2 col-lg-8 offset-md-2 col-md-8 offset-sm-3 col-sm-6 offset-col-2 col-8" >
+			<div class="offset-xl-2	col-xl-8  offset-lg-1 col-lg-10 offset-md-1 col-md-10  col-sm-12  col-12" >
 				
 					<div class="row justify-content-md-center">
 					    <div class="col col-lg-2">
